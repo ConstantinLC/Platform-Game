@@ -1,0 +1,23 @@
+http://kenney.nl/assets
+
+http://opengameart.org/content/platformer-art-deluxe
+http://opengameart.org/content/platformer-art-complete-pack-often-updated
+
+Sources :
+
+- Explosions Bombs Sprites : https://i.stack.imgur.com/GsOVC.png
+
+- Explosions WoodenBlock Sprites : http://i.imgur.com/ufySKE5.png
+
+- BladeSaw & ScifiTile (used for the ground) : http://www.gameart2d.com/free-sci-fi-platformer-tileset.html
+
+- 2nd & GG Level Background https://freestocktextures.com/texture/ground-pebble-soil,287.html
+
+- Boss of the 2nd level : http://kenney.nl/assets
+
+- Portal : http://www.clipartkid.com/images/601/whirlpool-zK6wGK-clipart.png. Crédit de l'image: Whirlpool from Vector.me (by Andy)
+
+- Lava : http://kenney.nl/assets
+
+- Background of the 1st level : http://opengameart.org/content/sci-fi-background
+

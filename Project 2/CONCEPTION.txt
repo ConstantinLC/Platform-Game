@@ -1,0 +1,47 @@
+CONCEPTION:
+
+Nous avons souhaité créer un jeu de plateforme de type Metroidvania dans une atmophère de science-fiction
+(le but principal est de débloquer au cours des niveaux des upgrades qui améliorent les capacités du personnage).
+Pour se conformer à ce style de jeu, nous n'avons fait qu'un seul grand niveau, composé de 4 parties, suivi d'un deuxième niveau de Boss.
+(il fallait que certains endroits de la première partie par exemple soient inaccessibles au début, pour que le joueur doive
+y retourner après avoir débloqué des compétences).
+
+- Modifications personnelles ajoutées à l'architecture proposée :
+
+* Ajout de l'interface Living pour symboliser des acteurs avec des points de vie.
+* Ajout de la super-classe Projectile car on avait plusieurs types de projectile et on voulait regrouper les fonctionnalités communes en une seule classe.
+* Ajout de sous-classes de Mover (SpikeMover et JumperMover) car ils utilisent exactement la même fonctionnalité de mouvement 
+
+- Fonctionnement de chaque classe ajoutée / modifiée:
+* Animation : Affiche une suite d'image pendant une durée choisie.
+* Background : Dessine un Sprite de priorité très basse derrière tous les acteurs
+* BladeSaw : Projectile volant qui suit le joueur en updatant son angle et sa vitesse en fonction de l'angle. Il met donc un certain temps pour tourner. 
+Il se détruit dès qu'il touche un acteur solide ou un acteur sensible aux dommages physiques (et lui inflige des dégats physiques).
+* Box : on ajoute une fonction pour échelonner une Box dans une direction passée en paramètre.  
+* Block : Création d'un constructeur pour répéter une texture à travers la box un certain nombre de fois.
+* Bombe : Nouvelle classe qui hérite de Projectile, qui explose après un délai. Le sprite alterne grâce à une fonction sinus modifiée.
+Cet acteur a une animation lors de son explosion.
+* Boss : Acteur vivant et volant que le joueur doit battre en faisant descendre sa vie à 0. Il envoie des boules de feu vers le joueur et décrit
+des formules géométriques qui sont différentes selon ses points de vie.
+* Checkpoint : Change la position de Respawn du joueur pour qu'il ne recommence pas du début.
+* Clock : Signal qui alterne entre Vrai et Faux selon un timer.
+* ExistenceOf : Signal qui est actif s'il existe dans le niveau des entités d'une classe, et inactif sinon.
+* Fireball : Hérite de projectile, on a ajouté un timer pour qu'elle disparaisse après un certain temps, et on ne lui applique pas de frottements car le feu n'est pas un objet matériel
+* FireballGenerator : Génère des boules de feu dans une direction définie.
+* JumperMover : Hérite de Mover, Jumper mis en mouvement comme un mover.
+* Lava : Acteur qui inflige des dégats Fire en continu au contact d'un acteur sensible aux dommages FIRE.
+* Living : Interface pour les acteurs avec des points de vie
+* Message : Acteur qui affiche une Spite au-dessus du background, si le signal passé en attribut est actif.
+* Mover : Plateforme mouvante qui informe le joueur de son mouvement pendant la dernière frame. Ca permettra au player de rester collé sur la plateforme.
+* Overlay : Fonctionne pour tout acteur implémentant l'interface Living. On a fait ça pour pouvoir montrer les points de vie des Boss.
+* Player : On a enlevé le saut avec les murs pour rendre les sauts plus réalistes, on lui donne la possibilité de débloquer 4 actions supplémentaires. On choisit
+dans le constructeur si le player respawn ou pas. Dans le cas de respawn, le monde ne se recharge pas, donc le player garde ses upgrades et les signaux restent activés.
+En cas de téléportation, on a créé une durée de téléportation pour animer l'action.
+* Portal : Téleporte un joueur à un endroit.
+* Projectile : Super-classe pour les différents types de projectiles.
+* SawBlade Generator : Génère des BladeSaw avec un angle initial.
+* SlimeBoss : Boss qui saute et se divise en plus petites instances de la classe SlimeBoss à sa mort tant que sa taille est suffisante.
+* Spike : Acteur pouvant être instancié avec une orientation parmi 4 possibles. Les dégats sont infligés en conséquence.
+* SpikeMover : Hérite de Mover, Spike mis en mouvement comme un mover.
+* Upgrade : Boîte qui donne un upgrade à un acteur à travers des dégats de type UPGRADE.
+* WoodenBox : Bloc qui peut se détruire s'il est soumis à des dégats FIRE suffisamment puissants. Il a une animation à sa mort.
